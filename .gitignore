@@ -1,0 +1,6 @@
+*.o
+*.a
+test_*
+!test_*.c
+examples/*
+!examples/*.c
