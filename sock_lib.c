@@ -170,7 +170,7 @@ PRIVATE SOCKET accept_socket(SOCKET s)
 
 	new_sock = accept(s, NULL, NULL);
 
-	if (new_sock == INVALID_SOCKET) {	/* FIX (1.0, 2026): was s */
+	if (new_sock == INVALID_SOCKET) {	/* FIX (1.1, 2026): was s */
 		nio_log_print("Error waiting for new connection!\n");
 		return (INVALID_SOCKET);
 	}

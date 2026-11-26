@@ -57,7 +57,7 @@ int main(void)
 
 	printf("sock_lib %s (%s)\n", SOCK_LIB_VERSION, SOCK_LIB_ORIGIN);
 
-	/* 1.0 fix: a failed accept() was not noticed (it checked the
+	/* 1.1 fix: a failed accept() was not noticed (it checked the
 	 * listening socket). Interrupt accept() with a timer and check that
 	 * init_tcp_server() logs the error and returns INVALID_SOCKET. */
 	{

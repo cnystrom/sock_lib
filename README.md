@@ -1,6 +1,11 @@
 # sock_lib: simple TCP and UDP sockets
 
-Version 1.0 (2026). Split from NewIO 0.12, https://github.com/cnystrom/newio
+Version 1.1 (2026). Split from NewIO 0.12, https://github.com/cnystrom/newio
+
+## Versions
+
+- **1.0:** original code as published in NewIO 0.12 (tag `v1.0`).
+- **1.1:** this release, with the fixes listed below. See `CHANGES.md`.
 
 sock_lib wraps BSD sockets for NewIO: a one-call TCP server (bind, listen,
 accept), a TCP client, line and block reads and writes, a poll for waiting
@@ -25,7 +30,7 @@ From `sock_lib.h`:
 
 `sock_lib.c` also has a public `read_socket_n()` (read exactly `n` bytes)
 that is not in the header. `sock_lib_version.h` defines `SOCK_LIB_VERSION`
-("1.0") and `SOCK_LIB_ORIGIN`.
+("1.1") and `SOCK_LIB_ORIGIN`.
 
 ## Dependencies
 
@@ -51,7 +56,7 @@ When unpacked from the release tarballs, the directory names include the
 version, so give the sibling paths:
 
 ```sh
-make LOG_LIB_DIR=../log_lib-1.0 test
+make LOG_LIB_DIR=../log_lib-1.1 test
 ```
 
 `make test` forks a TCP server and client on a loopback port (20000-39999,
@@ -75,7 +80,7 @@ Contact: Chris Nystrom <cnystrom@gmail.com>
 ## Changes from NewIO
 
 - `sock_lib.c:32`: `#include "nio_log.h"` became `#include "log_lib.h"`.
-- `sock_lib.c:173`: bug fix, see "Fixed in 1.0".
+- `sock_lib.c:173`: bug fix, see "Fixed in 1.1".
 - Removed two old personal contact lines (a web-log URL and a chat handle) from the file headers, at Chris's request (2026). The rest of each header and the authorship are unchanged, so header-area line numbers are 2 lower than in NewIO. This includes the `examples/`.
 - `Makefile:28-29`: `-I.. -I../nio_log -I../win32_lib` became `-I.
   -I$(LOG_LIB_DIR)`. `win32_lib` was third-party code removed from NewIO
@@ -90,7 +95,7 @@ Contact: Chris Nystrom <cnystrom@gmail.com>
 - Not copied: `archive.sh` and `VisualC++/` (old Visual Studio projects that
   point into the NewIO tree).
 
-## Fixed in 1.0
+## Fixed in 1.1
 
 - **`accept_socket()` checked the wrong socket** (`sock_lib.c:173`). After
   `accept()` it tested the listening socket instead of the new one, so a
